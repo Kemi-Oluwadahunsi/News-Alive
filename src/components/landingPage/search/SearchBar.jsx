@@ -52,8 +52,8 @@ import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Search } from "lucide-react";
 import { motion } from "framer-motion";
-import { setFilters } from "../../utils/redux/slices/articlesSlice";
-import debounce from 'lodash/debounce';
+import { setFilters } from "../../../../utils/redux/slices/articlesSlice";
+import debounce from "lodash/debounce";
 
 export default function SearchBar() {
   const dispatch = useDispatch();

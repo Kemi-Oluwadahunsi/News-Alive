@@ -84,7 +84,7 @@ export default function Header() {
         <Link to="/" className="text-2xl font-bold text-white">
           NewsApp
         </Link>
-        <nav className="hidden md:block">
+        <nav className="hidden lg:block">
           <ul className="flex space-x-12 xl:space-x-[6rem]">
             {navLinks.map((link, index) => (
               <motion.li
@@ -110,28 +110,28 @@ export default function Header() {
         </nav>
 
         <button
-          className="text-white md:hidden"
+          className="text-white lg:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
       <AnimatePresence>
         {isMenuOpen && (
           <motion.nav
             ref={menuRef}
-            className="fixed inset-y-0 right-0 w-64 bg-gray-900 p-8 md:hidden"
+            className="fixed inset-y-0 top-[10%] right-0 w-64 sm:w-[50%] bg-gray-900 p-8 lg:hidden"
             initial="closed"
             animate="open"
             exit="closed"
             variants={menuVariants}
           >
-            <ul className="space-y-4">
+            <ul className=" space-y-8 sm:space-y-12">
               {navLinks.map((link, i) => (
                 <motion.li key={link.name} custom={i} variants={linkVariants}>
                   <Link
                     to={link.path}
-                    className="text-white hover:text-blue-400 transition-colors duration-300 text-lg"
+                    className="text-white flex justify-center items-center hover:text-blue-400 transition-colors duration-300 text-lg sm:text-3xl"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}

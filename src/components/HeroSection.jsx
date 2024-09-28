@@ -103,7 +103,7 @@ import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const HeroCard = ({ article }) => (
-  <div className="relative h-[60vh] w-full overflow-hidden rounded-lg">
+  <div className="relative h-[80vh] w-full overflow-hidden rounded-lg">
     <img
       src={article.urlToImage || "/placeholder.svg?height=400&width=800"}
       alt={article.title}

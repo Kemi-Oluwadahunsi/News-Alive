@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { toast, Toaster } from "sonner"; 
+import { toast, Toaster } from "sonner";
 
 export default function Contact() {
   const [name, setName] = useState("");
@@ -46,7 +46,6 @@ export default function Contact() {
       transition={{ duration: 0.5 }}
       className="max-w-md mx-auto my-10 p-6 bg-gray-800 rounded-lg shadow-xl "
     >
-      <Toaster position="top-right" richColors />
       <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
       <form ref={form} onSubmit={sendEmail} className="space-y-4">
         <div>
@@ -108,6 +107,7 @@ export default function Contact() {
           {status === "sending" ? "Sending..." : "Send Message"}
         </button>
       </form>
+      <Toaster position="top-right" richColors />
     </motion.div>
   );
 }
