@@ -74,10 +74,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 text-blue-600 max-w-[1440px] mx-auto transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 max-w-[1440px] mx-auto transition-all duration-300 ${
         isScrolled
-          ? "bg-gray-900 shadow-[0px_0px_5px_rgba(37,99,235,0.5)]"
-          : "bg-inherit border-b border-[#2563eb]"
+          ? "bg-gray-900 shadow-[0px_0px_10px_rgba(37,99,235,0.5)]"
+          : "bg-inherit border-b border-[rgba(37,99,235,0.5)]"
       }`}
     >
       <div className="container mx-auto px-4 md:px-12 py-4 flex justify-between items-center">
@@ -108,7 +108,7 @@ export default function Header() {
             ))}
           </ul>
         </nav>
-        
+
         <button
           className="text-white md:hidden"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
