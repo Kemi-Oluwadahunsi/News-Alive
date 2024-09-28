@@ -1,62 +1,6 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-// import { motion } from "framer-motion";
-
-// export default function HeroSection({ article }) {
-//   if (!article) return null;
-
-//   return (
-//     <motion.section
-//       initial={{ opacity: 0, y: 20 }}
-//       animate={{ opacity: 1, y: 0 }}
-//       transition={{ duration: 0.5 }}
-//       className="my-12 relative h-[70vh] rounded-xl overflow-hidden"
-//     >
-//       <div className="absolute inset-0 overflow-hidden">
-//         <img
-//           src={article.urlToImage}
-//           alt={article.title}
-//           className="w-full h-full object-cover"
-//         />
-//         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-//       </div>
-//       <div className="relative h-full flex items-end">
-//         <div className="container mx-auto px-4 pb-12">
-//           <motion.div
-//             initial={{ opacity: 0, y: 20 }}
-//             animate={{ opacity: 1, y: 0 }}
-//             transition={{ duration: 0.5, delay: 0.2 }}
-//           >
-//             <span className="bg-blue-600 text-white px-2 py-1 text-sm uppercase tracking-wider rounded">
-//               {article.source.name}
-//             </span>
-//             <h2 className="text-4xl font-bold mt-2 mb-4 max-w-2xl">
-//               {article.title}
-//             </h2>
-//             <p className="text-gray-300 max-w-2xl mb-4">
-//               {article.description}
-//             </p>
-//             <div className="flex items-center">
-//               <span className="text-sm text-gray-400 mr-4">
-//                 {new Date(article.publishedAt).toLocaleDateString()}
-//               </span>
-//               <Link
-//                 to={`/article/${encodeURIComponent(article.title)}`}
-//                 className="bg-white text-gray-900 px-4 py-2 rounded-full hover:bg-gray-200 transition-colors duration-300"
-//               >
-//                 Read More
-//               </Link>
-//             </div>
-//           </motion.div>
-//         </div>
-//       </div>
-//     </motion.section>
-//   );
-// }
 
 
 // import { useState, useEffect } from "react";
-// import { motion, AnimatePresence } from "framer-motion";
 // import { Link } from "react-router-dom";
 // import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -105,21 +49,6 @@
 //     setCurrentIndex((prevIndex) => (prevIndex + 1) % heroArticles.length);
 //   };
 
-//   const variants = {
-//     enter: (direction) => ({
-//       x: direction > 0 ? "100%" : "-100%",
-//       opacity: 0,
-//     }),
-//     center: {
-//       x: 0,
-//       opacity: 1,
-//     },
-//     exit: (direction) => ({
-//       x: direction < 0 ? "100%" : "-100%",
-//       opacity: 0,
-//     }),
-//   };
-
 //   if (heroArticles.length === 0) {
 //     return (
 //       <section className="relative my-8 h-[60vh] bg-gray-800 rounded-lg flex items-center justify-center">
@@ -130,23 +59,7 @@
 
 //   return (
 //     <section className="relative my-8">
-//       <AnimatePresence initial={false} custom={currentIndex}>
-//         <motion.div
-//           key={currentIndex}
-//           custom={currentIndex}
-//           variants={variants}
-//           initial="enter"
-//           animate="center"
-//           exit="exit"
-//           transition={{
-//             // x: { type: "spring", stiffness: 300, damping: 30 },
-//             opacity: { duration: 0.2 },
-//           }}
-//         >
-//           <HeroCard article={heroArticles[currentIndex]} />
-//         </motion.div>
-//       </AnimatePresence>
-
+//       <HeroCard article={heroArticles[currentIndex]} />
 //       {heroArticles.length > 1 && (
 //         <>
 //           <button
@@ -173,7 +86,7 @@
 //                   index === currentIndex
 //                     ? "bg-blue-600"
 //                     : "bg-white bg-opacity-50"
-//                 } transition-all duration-300`}
+//                 } transition-all duration-500`}
 //                 aria-label={`Go to article ${index + 1}`}
 //               ></button>
 //             ))}
@@ -185,6 +98,7 @@
 // }
 
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
@@ -193,7 +107,7 @@ const HeroCard = ({ article }) => (
     <img
       src={article.urlToImage || "/placeholder.svg?height=400&width=800"}
       alt={article.title}
-      className="absolute inset-0 h-full w-full object-cover"
+      className="absolute inset-0 h-full w-full object-cover bg-top"
     />
     <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
     <div className="absolute bottom-0 left-0 p-6 text-white">
@@ -209,7 +123,8 @@ const HeroCard = ({ article }) => (
   </div>
 );
 
-export default function HeroSection({ articles = [] }) {
+export default function HeroSection() {
+  const { items: articles } = useSelector((state) => state.articles);
   const [currentIndex, setCurrentIndex] = useState(0);
   const heroArticles = articles.slice(0, 3);
 
