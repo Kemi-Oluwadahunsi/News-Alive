@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+// Be sure to include your API KEY from NewsAPI in a .env file
 const API_KEY = import.meta.env.VITE_API_KEY;
 const API_URL =
   "https://newsapi.org/v2/top-headlines?country=us&apiKey=" + API_KEY;
@@ -30,6 +31,8 @@ const articlesSlice = createSlice({
     page: 1,
     loading: false,
   },
+
+  // filtering and searching logic. Filters by article sources, authors, and date, and searches by keyword input
   reducers: {
     setFilters: (state, action) => {
       const newFilters = { ...state.filters, ...action.payload };
@@ -39,6 +42,7 @@ const articlesSlice = createSlice({
           const keyword = state.filters.keyword.toLowerCase();
           const author = state.filters.author.toLowerCase();
           const sources = state.filters.sources;
+          const fromDate = state.filters.fromDate;
 
           const matchesKeyword =
             keyword === "" ||
@@ -51,8 +55,12 @@ const articlesSlice = createSlice({
             !author || article.author?.toLowerCase() === author;
           const matchesSources =
             sources.length === 0 || sources.includes(article.source.name);
+            const matchesDate =
+              !fromDate ||
+              new Date(article.publishedAt).toDateString() ===
+                fromDate.toDateString();
 
-          return matchesKeyword && matchesAuthor && matchesSources;
+          return matchesKeyword && matchesAuthor && matchesSources && matchesDate;
         });
         state.page = 1;
       }
@@ -65,6 +73,7 @@ const articlesSlice = createSlice({
         keyword: "",
         author: "",
         sources: [],
+        fromDate: null,
       };
       state.filteredArticles = state.items;
       state.page = 1;

@@ -1,3 +1,5 @@
+// This component is the modal that pops up when the user clicks on the "Subscribe" button on the landing page. 
+
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Mail, CheckCircle } from "lucide-react";
@@ -9,7 +11,6 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
 
   useEffect(() => {
     if (isOpen) {
-      // Reset the form when the modal is opened
       setEmail("");
       setIsSubmitted(false);
     }
@@ -17,15 +18,15 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Here you would typically send the email to your backend
+    // could handle a backend logic here, like sending the data collected to an endpoint but since it's a demo project, I couldn't do that
     console.log("Subscribing email:", email);
     toast.success("You have successfully subscribed to our newsletter!");
     setIsSubmitted(true);
 
-    // Close the modal after a short delay
+    // this function closes the modal after a short delay
     setTimeout(() => {
       onClose();
-    }, 1500); // Adjust this delay as needed
+    }, 1500); 
   };
 
   if (!isOpen) return null;

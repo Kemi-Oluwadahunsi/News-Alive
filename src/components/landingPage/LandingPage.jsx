@@ -1,8 +1,10 @@
+// This component contains some of the Home page sections, specifically the Trending topics section, Key features section, and the subscription section.
+
 import { motion } from "framer-motion";
-import DiscoverNews from "./staticComponents/DicoverNews";
 import Features from "./staticComponents/Features";
 import SubscriptionModal from "./staticComponents/SubscriptionModal";
 import { useState } from "react";
+import TrendingTopics from "./TrendingTopics";
 
 export default function LandingPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +15,17 @@ export default function LandingPage() {
     <>
       <div className="min-h-screen text-white mt-20">
         <section>
-          <DiscoverNews />
+          <div>
+            <h2 className="text-3xl font-bold mb-8 text-center">
+              Discover News from Around the World
+            </h2>
+
+            <section className="py-16 px-4 md:px-8 bg-gray-800">
+              <div className="container mx-auto">
+                <TrendingTopics />
+              </div>
+            </section>
+          </div>
         </section>
 
         <section>
@@ -22,7 +34,7 @@ export default function LandingPage() {
 
         <section className="py-16 px-4 md:px-8 relative">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-8">Stay Informed?</h2>
+            <h2 className="text-3xl font-bold mb-8">Ready To Stay Informed?</h2>
             <p className="text-xl text-gray-300 mb-8">
               Join thousands of users who trust our app for their daily news.
             </p>

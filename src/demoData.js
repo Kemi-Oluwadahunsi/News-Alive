@@ -1,3 +1,5 @@
+// This is a simulated data file which I used to develop the UI and some basic functionalities before fetching data from the NewsAPI endpoint. I might be needing it later for production purpose, that's why I am leaving it here.
+
 export const demoArticles = [
   {
     title:

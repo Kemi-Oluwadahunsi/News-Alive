@@ -1,4 +1,6 @@
-import { Facebook, Twitter, Youtube, Instagram, Linkedin } from "lucide-react";
+// This footer component contains the some links, social connect links, and contact information.
+import { Facebook, Twitter, Linkedin, Github, MessageCircle, MapPin, Phone, Mail } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const socialLinks = [
   {
@@ -6,82 +8,133 @@ const socialLinks = [
     icon: Facebook,
     url: "https://www.facebook.com/kaliceagbaiaka01",
   },
-  { name: "Twitter", icon: Twitter, url: "https://twitter.com/oluwakemi_od" },
   {
-    name: "YouTube",
-    icon: Youtube,
-    url: "https://www.youtube.com/channel/UCf7rWsAGlQXVzKFDUXwjdZQ",
+    name: "Twitter",
+    icon: Twitter,
+    url: "https://twitter.com/kemi_oluwadahunsi",
   },
   {
-    name: "Instagram",
-    icon: Instagram,
-    url: "https://www.instagram.com/oluwakemi_od/",
+    name: "WhatSapp",
+    icon: MessageCircle,
+    url: "https://wa.me/601113219046",
+  },
+  {
+    name: "GitHub",
+    icon: Github,
+    url: "https://github.com/Kemi-Oluwadahunsi",
   },
   {
     name: "LinkedIn",
     icon: Linkedin,
-    url: "https://www.linkedin.com/in/oluwakemi-oluwadahunsi/",
+    url: "https://www.linkedin.com/in/oluwakemioluwadahunsi/",
   },
 ];
 
 const exploreLinks = [
-  "About",
-  "Partners",
-  "Job Opportunities",
-  "Advertise",
-  "Membership",
+  { name: "About", path: "/about" },
+  { name: "Articles", path: "/articles" },
+  { name: "Write to Us", path: "/contact" },
+  { name: "Advertise", path: "/advertise" },
+  { name: "Membership", path: "/membership" },
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 py-12">
-      <div className="container mx-auto px-8 xl:px-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-        <div className="">
-          <h3 className="text-xl font-bold mb-4">Contact the Publisher</h3>
-          <p className="text-gray-400">oluwakemioluwadahunsi@gmail.com</p>
-          <p className="text-gray-400">+60 111 321 9046</p>
-        </div>
-        <div className="lg:ml-12 xl:ml-0">
-          <h3 className="text-xl font-bold mb-4 ">Explorate</h3>
-          <ul className="space-y-2">
-            {exploreLinks.map((item) => (
-              <li key={item}>
+    <footer className="bg-gray-800 py-12" aria-labelledby="footer-heading">
+      <h2 id="footer-heading" className="sr-only">
+        Footer
+      </h2>
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="lg:grid lg:grid-cols-4 lg:gap-8">
+          <div className="space-y-8 lg:col-span-1">
+            <h3 className="text-xl font-bold text-white mb-4">
+              Contact the Publisher
+            </h3>
+            <ul className="space-y-4">
+              <li className="flex items-center">
+                <Mail
+                  className="h-6 w-6 text-gray-400 mr-2"
+                  aria-hidden="true"
+                />
                 <a
-                  href="#"
+                  href="mailto:oluwakemioluwadahunsi@gmail.com"
                   className="text-gray-400 hover:text-white transition-colors duration-300"
                 >
-                  {item}
+                  oluwakemioluwadahunsi@gmail.com
                 </a>
               </li>
-            ))}
-          </ul>
-        </div>
-        <div className="lg:ml-8 xl:ml-0">
-          <h3 className="text-xl font-bold mb-4">Headquarter</h3>
-          <p className="text-gray-400">12, Jalan Ampang,</p>
-          <p className="text-gray-400">50450 Kuala Lumpur,</p>
-          <p className="text-gray-400">Malaysia</p>
-        </div>
-        <div className="lg:ml-4 xl:ml-0">
-          <h3 className="text-xl font-bold mb-4">Connections</h3>
-          <div className="flex space-x-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors duration-300"
-                aria-label={social.name}
-              >
-                <social.icon size={24} />
-              </a>
-            ))}
+              <li className="flex items-center">
+                <Phone
+                  className="h-6 w-6 text-gray-400 mr-2"
+                  aria-hidden="true"
+                />
+                <a
+                  href="tel:+601113219046"
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                >
+                  +60 111 321 9046
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className="mt-12 lg:mt-0 lg:col-span-1 lg:ml-16 xl:ml-0">
+            <h3 className="text-xl font-bold text-white mb-4">Explore</h3>
+            <ul className="space-y-4">
+              {exploreLinks.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    to={item.path}
+                    className="text-gray-400 hover:text-white transition-colors duration-300"
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="mt-12 lg:mt-0 lg:col-span-1 lg:ml-4 xl:ml-0">
+            <h3 className="text-xl font-bold text-white mb-4">Headquarters</h3>
+            <address className="not-italic text-gray-400 space-y-2">
+              <p className="flex items-start">
+                <MapPin
+                  className="h-6 w-6 text-gray-400 mr-1 mt-1 "
+                  aria-hidden="true"
+                />
+                <span>
+                  12, Jalan Ampang,
+                  <br />
+                  50450 Kuala Lumpur,
+                  <br />
+                  Malaysia
+                </span>
+              </p>
+            </address>
+          </div>
+          <div className="mt-12 lg:mt-0 lg:col-span-1">
+            <h3 className="text-xl font-bold text-white mb-4">
+              Connect with Us
+            </h3>
+            <div className="flex space-x-6">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors duration-300"
+                >
+                  <span className="sr-only">{social.name}</span>
+                  <social.icon className="h-6 w-6" aria-hidden="true" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className="container mx-auto px-4 mt-8 pt-8 border-t border-gray-700 text-center text-gray-400">
-        <p>&copy; {new Date().getFullYear()} | KodeMaven</p>
+        <div className="mt-12 border-t border-gray-700 pt-8">
+          <p className="text-base text-gray-400 text-center">
+            &copy; {new Date().getFullYear()} KodeMaven. All rights reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

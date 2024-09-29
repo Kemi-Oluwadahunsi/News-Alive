@@ -1,3 +1,5 @@
+// This is the component for the arrow that appears when the user scrolls down the page.
+
 import { useState, useEffect } from "react";
 import { ChevronUp } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";

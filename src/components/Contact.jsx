@@ -1,42 +1,55 @@
+// This is the contact component where a user can send email directly to the website owner. The direct message is implemented using the emailjs library. Kindly check the .env.sample file to check what IDs are needed for this functionality to work, all you have to do here is uncomment the codes and replace the onSubmit value in the form to "sendEmail". But for now, I only log a success message for submission purpose.
+
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
+// import emailjs from "@emailjs/browser";
 import { toast, Toaster } from "sonner";
 
 export default function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus] = useState("");
+  const [
+    status,
+    // setStatus
+  ] = useState("");
   const form = useRef();
 
-  const sendEmail = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    setStatus("sending");
-
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        form.current,
-        "YOUR_USER_ID"
-      )
-      .then(
-        (result) => {
-          console.log(result.text);
-          setStatus("success");
-          toast.success("Message sent successfully!");
-          setName("");
-          setEmail("");
-          setMessage("");
-        },
-        (error) => {
-          console.log(error.text);
-          setStatus("error");
-          toast.error("Error sending message. Please try again.");
-        }
-      );
+    toast.success("Message submitted successfully");
+    setName("");
+    setEmail("");
+    setMessage("");
   };
+
+  // const sendEmail = (e) => {
+  //   e.preventDefault();
+  //   setStatus("sending");
+
+  //   emailjs
+  //     .sendForm(
+  //       import.meta.env.VITE_SERVICE_ID,
+  //       import.meta.env.VITE_TEMPLATE_ID,
+  //       form.current,
+  //       import.meta.env.VITE_USER_ID
+  //     )
+  //     .then(
+  //       (result) => {
+  //         console.log(result.text);
+  //         setStatus("success");
+  //         toast.success("Message sent successfully!");
+  //         setName("");
+  //         setEmail("");
+  //         setMessage("");
+  //       },
+  //       (error) => {
+  //         console.log(error.text);
+  //         setStatus("error");
+  //         toast.error("Error sending message. Please try again.");
+  //       }
+  //     );
+  // };
 
   return (
     <motion.div
@@ -47,7 +60,7 @@ export default function Contact() {
       className="max-w-md mx-auto my-10 p-6 bg-gray-800 rounded-lg shadow-xl "
     >
       <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
-      <form ref={form} onSubmit={sendEmail} className="space-y-4">
+      <form ref={form} onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label
             htmlFor="name"
@@ -58,7 +71,7 @@ export default function Contact() {
           <input
             type="text"
             id="name"
-            name="user_name"
+            name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -75,7 +88,7 @@ export default function Contact() {
           <input
             type="email"
             id="email"
-            name="user_email"
+            name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required

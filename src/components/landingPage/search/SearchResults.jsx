@@ -1,3 +1,5 @@
+// This component is used to display search results on the landing page. It takes in the filteredArticles and filters from the Redux store and displays them in a grid layout.
+
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ArticleCard from "../../articles/ArticleCard";

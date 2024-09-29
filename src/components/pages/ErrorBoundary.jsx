@@ -1,3 +1,5 @@
+// This component displays when there is an error in the project instead of a blank screen.
+
 import React from "react";
 
 class ErrorBoundary extends React.Component {

@@ -1,6 +1,8 @@
+// This is the header component, it handles the navigation links for the project. Fully optimized and responsive.
+
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, Newspaper, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Header() {
@@ -81,8 +83,11 @@ export default function Header() {
       }`}
     >
       <div className="container mx-auto px-4 md:px-12 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-bold text-white">
-          NewsApp
+        <Link to="/" className="inline-flex items-center">
+          <Newspaper className="h-8 w-8 text-blue-500 mr-2" />
+          <span className="text-2xl font-bold text-white tracking-tight">
+            News<span className="text-blue-500">Alive</span>
+          </span>
         </Link>
         <nav className="hidden lg:block">
           <ul className="flex space-x-12 xl:space-x-[6rem]">
@@ -120,7 +125,7 @@ export default function Header() {
         {isMenuOpen && (
           <motion.nav
             ref={menuRef}
-            className="fixed inset-y-0 top-[10%] right-0 w-64 sm:w-[50%] bg-gray-900 p-8 lg:hidden"
+            className="fixed inset-y-0 top-[9.5%] z-20 shadow-2xl right-0 w-64 sm:w-[40%] bg-gray-900 p-8 lg:hidden border-l border-[rgba(29,78,216,0.5)]"
             initial="closed"
             animate="open"
             exit="closed"
@@ -131,7 +136,7 @@ export default function Header() {
                 <motion.li key={link.name} custom={i} variants={linkVariants}>
                   <Link
                     to={link.path}
-                    className="text-white flex justify-center items-center hover:text-blue-400 transition-colors duration-300 text-lg sm:text-3xl"
+                    className="text-white flex justify-center items-center hover:text-blue-400 transition-colors duration-300 text-lg sm:text-xl"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     {link.name}
