@@ -22,7 +22,7 @@ export default function Contact() {
     setEmail("");
     setMessage("");
   };
-
+// Function to fix EmailJs for direct message. Uncomment the codes below and replace the onSubmit value in the form to "sendEmail"
   // const sendEmail = (e) => {
   //   e.preventDefault();
   //   setStatus("sending");

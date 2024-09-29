@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import { describe, it, expect, vi } from "vitest";
 import Header from "../Header";
 
-// Mock the framer-motion module
+// Mocking the framer-motion module
 vi.mock("framer-motion", () => ({
   motion: {
     li: ({ children, ...props }) => <li {...props}>{children}</li>,
@@ -12,7 +12,7 @@ vi.mock("framer-motion", () => ({
   AnimatePresence: ({ children }) => <>{children}</>,
 }));
 
-// Mock the useLocation hook
+// Mocking the useLocation hook
 vi.mock("react-router-dom", async () => {
   const actual = await vi.importActual("react-router-dom");
   return {

@@ -2,7 +2,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import { describe, it, expect, vi } from "vitest";
 import Filters from "../Filters";
 
-// Mock the framer-motion module
+// Mocking the framer-motion module
 vi.mock("framer-motion", () => ({
   motion: {
     div: ({ children, ...props }) => <div {...props}>{children}</div>,
@@ -10,7 +10,7 @@ vi.mock("framer-motion", () => ({
   AnimatePresence: ({ children }) => <>{children}</>,
 }));
 
-// Mock the react-datepicker module
+// Mocking the react-datepicker module
 vi.mock("react-datepicker", () => {
   return {
     __esModule: true,

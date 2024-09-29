@@ -1,4 +1,4 @@
-// This component displays when there is an error in the project instead of a blank screen.
+// This component displays when there is an error in the project instead of a blank screen. This is wrapping the entire project for global access by all components.
 
 import React from "react";
 

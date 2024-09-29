@@ -9,7 +9,7 @@ import articlesReducer, {
   resetFilters,
 } from "../../../utils/redux/slices/articlesSlice";
 
-// Mock the framer-motion module
+// Mocking the framer-motion module
 vi.mock("framer-motion", () => ({
   motion: {
     div: ({ children, ...props }) => <div {...props}>{children}</div>,
@@ -23,24 +23,24 @@ vi.mock("framer-motion", () => ({
   useInView: () => [null, false],
 }));
 
-// Mock the LoadingFallback component
+// Mocking the LoadingFallback component
 vi.mock("../pages/LoadingFallback", () => ({
   default: () => <div data-testid="loading-fallback">Loading...</div>,
 }));
 
-// Mock the ArticleCard component
+// Mocking the ArticleCard component
 vi.mock("../articles/ArticleCard", () => ({
   default: ({ article }) => (
     <div data-testid="article-card">{article.title}</div>
   ),
 }));
 
-// Mock the SearchBar component
+// Mocking the SearchBar component
 vi.mock("../landingPage/search/SearchBar", () => ({
   default: () => <div data-testid="search-bar">Search Bar</div>,
 }));
 
-// Mock the Filters component
+// Mocking the Filters component
 vi.mock("../Filters", () => ({
   default: ({ setFilters }) => (
     <div data-testid="filters">
