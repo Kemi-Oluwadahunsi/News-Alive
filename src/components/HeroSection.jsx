@@ -15,7 +15,7 @@ const HeroCard = React.memo(({ article }) => (
     className="relative h-[80vh] w-full overflow-hidden rounded-lg"
   >
     <img
-      src={article.urlToImage || "/placeholder.svg?height=400&width=800"}
+      src={article.urlToImage || "/heroAvatar.png?height=400&width=800"}
       alt={article.title}
       className="absolute inset-0 h-full w-full object-cover bg-top"
       loading="eager"
