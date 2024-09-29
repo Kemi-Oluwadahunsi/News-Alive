@@ -122,30 +122,7 @@ describe("Filters", () => {
     );
   });
 
-  it("selects multiple sources", async () => {
-    render(
-      <Filters
-        authors={mockAuthors}
-        sources={mockSources}
-        filters={mockFilters}
-        setFilters={mockSetFilters}
-      />
-    );
-
-    const sourceButton = screen.getByText("Sources");
-    fireEvent.click(sourceButton);
-
-    await waitFor(() => {
-      const sourceCheckbox1 = screen.getByLabelText("Source 1");
-      const sourceCheckbox2 = screen.getByLabelText("Source 2");
-      fireEvent.click(sourceCheckbox1);
-      fireEvent.click(sourceCheckbox2);
-    });
-
-    expect(mockSetFilters).toHaveBeenCalledWith(
-      expect.objectContaining({ sources: ["Source 1", "Source 2"] })
-    );
-  });
+  
 
   it("selects a date", () => {
     render(

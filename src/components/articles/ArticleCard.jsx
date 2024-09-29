@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
+
 const ArticleCard = React.memo(({ article, index }) => {
   const [imageLoaded, setImageLoaded] = useState(false);
   const [imageError, setImageError] = useState(false);
@@ -64,7 +65,7 @@ const ArticleCard = React.memo(({ article, index }) => {
             </div>
           )}
           <img
-            src={article.urlToImage || "/placeholder.svg?height=200&width=400"}
+            src={article.urlToImage || "/avatar.webp?height=200&width=400"}
             alt={imageError ? "Article image unavailable" : article.title}
             className={`w-full h-full object-cover transform hover:scale-110 transition-transform duration-300 ${
               imageLoaded ? "opacity-100" : "opacity-0"

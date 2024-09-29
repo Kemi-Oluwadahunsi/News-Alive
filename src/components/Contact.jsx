@@ -57,7 +57,7 @@ export default function Contact() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className="max-w-md mx-auto my-10 p-6 bg-gray-800 rounded-lg shadow-xl "
+      className="max-w-md mx-auto my-16 p-6 bg-gray-800 rounded-lg shadow-xl "
     >
       <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
       <form ref={form} onSubmit={handleSubmit} className="space-y-4">

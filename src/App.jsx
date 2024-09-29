@@ -10,7 +10,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { persistQueryClient } from "react-query/persistQueryClient-experimental";
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
-import { ReactQueryDevtools } from "react-query/devtools";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SearchBar from "./components/landingPage/search/SearchBar";
@@ -168,7 +167,6 @@ export default function App() {
         <ScrollToTop />
         <AppContent />
       </Router>
-      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }

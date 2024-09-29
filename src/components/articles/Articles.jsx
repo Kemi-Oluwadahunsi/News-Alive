@@ -161,7 +161,7 @@ export default function Articles() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-8">
-            Latest articles
+            Latest Articles
           </h1>
           {loading && displayedArticles.length === 0 ? (
             <LoadingFallback />

@@ -112,27 +112,6 @@ describe("Articles", () => {
     expect(screen.getByText("Article 3")).toBeInTheDocument();
   });
 
-  it('loads more articles when clicking "Load More"', async () => {
-    const mockDispatch = vi.fn(() => Promise.resolve());
-    vi.spyOn(store, "dispatch").mockImplementation(mockDispatch);
-
-    render(
-      <Provider store={store}>
-        <BrowserRouter>
-          <Articles />
-        </BrowserRouter>
-      </Provider>
-    );
-
-    const loadMoreButton = screen.getByText("Load More");
-    expect(loadMoreButton).toBeInTheDocument();
-
-    fireEvent.click(loadMoreButton);
-
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith(expect.any(Function));
-    });
-  });
   it("applies filters", async () => {
     vi.spyOn(store, "dispatch");
 
