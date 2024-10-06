@@ -2,7 +2,7 @@
 
 import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-// import emailjs from "@emailjs/browser";
+import emailjs from "@emailjs/browser";
 import { toast, Toaster } from "sonner";
 
 export default function Contact() {
@@ -11,45 +11,45 @@ export default function Contact() {
   const [message, setMessage] = useState("");
   const [
     status,
-    // setStatus
+    setStatus
   ] = useState("");
   const form = useRef();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    toast.success("Message submitted successfully");
-    setName("");
-    setEmail("");
-    setMessage("");
-  };
-// Function to fix EmailJs for direct message. Uncomment the codes below and replace the onSubmit value in the form to "sendEmail"
-  // const sendEmail = (e) => {
+  // const handleSubmit = (e) => {
   //   e.preventDefault();
-  //   setStatus("sending");
-
-  //   emailjs
-  //     .sendForm(
-  //       import.meta.env.VITE_SERVICE_ID,
-  //       import.meta.env.VITE_TEMPLATE_ID,
-  //       form.current,
-  //       import.meta.env.VITE_USER_ID
-  //     )
-  //     .then(
-  //       (result) => {
-  //         console.log(result.text);
-  //         setStatus("success");
-  //         toast.success("Message sent successfully!");
-  //         setName("");
-  //         setEmail("");
-  //         setMessage("");
-  //       },
-  //       (error) => {
-  //         console.log(error.text);
-  //         setStatus("error");
-  //         toast.error("Error sending message. Please try again.");
-  //       }
-  //     );
+  //   toast.success("Message submitted successfully");
+  //   setName("");
+  //   setEmail("");
+  //   setMessage("");
   // };
+// Function to fix EmailJs for direct message. Uncomment the codes below and replace the onSubmit value in the form to "sendEmail"
+  const sendEmail = (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    emailjs
+      .sendForm(
+        import.meta.env.VITE_SERVICE_ID,
+        import.meta.env.VITE_TEMPLATE_ID,
+        form.current,
+        import.meta.env.VITE_USER_ID
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+          setStatus("success");
+          toast.success("Message sent successfully!");
+          setName("");
+          setEmail("");
+          setMessage("");
+        },
+        (error) => {
+          console.log(error.text);
+          setStatus("error");
+          toast.error("Error sending message. Please try again.");
+        }
+      );
+  };
 
   return (
     <motion.div
@@ -60,7 +60,7 @@ export default function Contact() {
       className="max-w-md mx-auto my-16 p-6 bg-gray-800 rounded-lg shadow-xl "
     >
       <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
-      <form ref={form} onSubmit={handleSubmit} className="space-y-4">
+      <form ref={form} onSubmit={sendEmail} className="space-y-4">
         <div>
           <label
             htmlFor="name"

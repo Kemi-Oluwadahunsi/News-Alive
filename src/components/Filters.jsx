@@ -120,7 +120,7 @@ export default function Filters({ authors, sources, filters, setFilters }) {
             id="fromDate"
             selected={filters.fromDate}
             onChange={(date) => handleFilterChange("fromDate", date)}
-            className="w-full p-2 bg-gray-800 rounded text-white"
+            className="w-full p-2 bg-gray-800 rounded text-white focus:outline-none focus:ring-2 focus:ring-blue-600"
             placeholderText="Select published date"
             maxDate={new Date()}
             showYearDropdown

@@ -12,7 +12,7 @@ import { persistQueryClient } from "react-query/persistQueryClient-experimental"
 import { createWebStoragePersistor } from "react-query/createWebStoragePersistor-experimental";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import SearchBar from "./components/landingPage/search/SearchBar";
+import SearchBar from "./components/search/SearchBar";
 import ScrollArrow from "./components/landingPage/staticComponents/ScrollArrow";
 import LoadingFallback from "./components/pages/LoadingFallback";
 import ErrorBoundary from "./components/pages/ErrorBoundary";
@@ -31,9 +31,7 @@ const Articles = lazy(() => import("./components/articles/Articles"));
 const SingleArticlePage = lazy(() =>
   import("./components/articles/SingleArticlePage")
 );
-const SearchResults = lazy(() =>
-  import("./components/landingPage/search/SearchResults")
-);
+const SearchResults = lazy(() => import("./components/search/SearchResults"));
 const Contact = lazy(() => import("./components/Contact"));
 const LandingPage = lazy(() => import("./components/landingPage/LandingPage"));
 
@@ -127,10 +125,10 @@ function AppContent() {
                       ) : (
                         <>
                           <HeroSection />
-                          <ArticleGrid />
-                          <LandingPage />
                         </>
                       )}
+                      <ArticleGrid />
+                      <LandingPage />
                     </motion.div>
                   </AnimatePresence>
                 }

@@ -1,0 +1,208 @@
+A. Components
+
+1. Header.jsx:
+
+- Features the app's logo with a link to the homepage wrapped around it.
+- Implements the navigation bar with links to Home, Articles, About, and Contact pages.
+
+2. HeroSection.jsx:
+
+- Displays a carousel of articles, with their title, description, and a "Read more" button that leads to the SingleArticlePage component.
+- The carousel is dynamically coded without the use of external library, with keyboard navigation included for next and previous arrows.
+
+3. About.jsx:
+
+- Contains information about the app and its purpose.
+- Displays a brief description and an email subscription button for users.
+
+4. Contact.jsx:
+- Provides a form for users to contact the app's creator, integrating EmailJs for instant and direct email in the inbox.
+- Includes fields for name, email, and message.
+- Uses sonner toast for displaying success and error messages.
+
+5. SearchBar.jsx:
+
+- Implements a search bar for searching articles by keyword.
+- Implements debounce from lodash library to optimize search performance.
+- Integrates with the Articles component for searching and displaying results.
+
+6. Articles.jsx:
+
+- This is the main component for displaying the list of all articles fetched from one of the newsAPI endpoints.
+- Implements infinite scrolling for loading more articles as the user scrolls, and displays articles with animations from Framer motion.
+- Integrates with the SearchBar and Filters components for article searching and filtering respectively.
+- Conditional rendering for displaying search or filter results or Latest articles.
+
+
+
+7. ArticleCard.jsx:
+
+- Represents individual article previews in the article list.
+- Displays article title, description, author, source, and publication date.
+- Implements lazy loading for article images, displays a placeholder image for articles whose image Urls are broken or not provided.
+
+
+
+8. ArticleGrid.jsx:
+
+- Manages the layout of articles in the Latest articles section on the homepage, with only 6 articles fetched.
+- Implements responsive grid layout using Tailwind CSS.
+- Includes a button for navigating to the main articles page to view all articles.
+
+
+
+9. SingleArticlePage.jsx:
+
+- Displays full article content when an article card is selected.
+- Integrated into articles fetched from both endpoints (all articles and trending topics)
+- Implements dynamic routing to load article details based on URL parameters.
+
+
+
+10. Filters.jsx:
+
+- Provides UI for filtering articles by author, source, and date.
+- Uses React Datepicker for date selection.
+- Implements collapsible sections for author and source filters using Framer Motion for animations.
+
+
+
+11. LandingPage.jsx:
+
+- The home page component showcasing featured articles and trending topics.
+- Integrates with TrendingTopics, Features, and Subscription components.
+
+
+
+12. TrendingTopics.jsx:
+
+- Displays a list of currently trending news topics. These articles are fetched from the BBC endpoint from newsAPI.
+- The articles in this component are fetched in the trendingSlice file in the redux folder.
+- Implements a carousel using React Slick for a dynamic presentation.
+
+
+
+13. ErrorBoundary.jsx:
+
+- Catches and handles errors that occur in child components.
+- Displays a user-friendly error message when exceptions occur.
+
+
+
+14. LoadingFallback.jsx:
+
+- Provides a loading indicator for components that are being lazily loaded, and other areas when their loading state is true.
+
+
+
+15. NotFound.jsx:
+
+- Displays a 404 page for routes that don't exist.
+
+
+
+16. ScrollToTop.jsx:
+
+- Ensures that the page scrolls to the top when navigating between routes, uses the window's scroll API.
+
+
+
+
+
+
+B. State Management
+
+- Redux Toolkit: Used for global state management.
+
+- `articlesSlice.js`: Manages the state of articles, including filtering and pagination.
+- `trendingSlice.js`: Manages the state of trending topics.
+
+
+
+- React Query: Used for server state management and caching.
+
+- Implements caching of API responses to reduce network requests.
+- Provides background refetching for data freshness.
+
+
+C. Optimization Techniques
+
+1. Code Splitting and Lazy Loading:
+
+- Implemented using React.lazy and Suspense for route-based code splitting.
+- Reduces initial bundle size and improves application load time.
+
+
+
+2. Image Optimization:
+
+- Lazy loading of images using the `loading="lazy"` attribute.
+- Responsive images using Tailwind CSS classes.
+
+
+
+3. Infinite Scrolling:
+
+- Implemented in the Articles component using React Intersection Observer.
+- Loads articles in batches as the user scrolls, improving initial load time and performance.
+
+
+
+4. Virtual Scrolling:
+
+- Implemented using react-window for efficient rendering of large lists.
+- Significantly improves performance when dealing with a large number of articles.
+
+
+
+5. Memoization:
+
+- Use of React.memo, useMemo, and useCallback hooks to prevent unnecessary re-renders.
+- Particularly important in the Filters, and Articles components to optimize complex filtering operations and re-renders.
+
+
+
+6. Debouncing:
+
+- Implemented in the SearchBar component to limit the frequency of API calls during user input.
+
+
+
+7. CSS Optimization:
+
+- Use of Tailwind CSS for a utility-first approach, resulting in smaller CSS bundle sizes.
+- PurgeCSS integrated with Tailwind to remove unused styles in production.
+
+
+
+8. Redux Performance Optimizations:
+
+- Use of createSelector for memoized state derivation.
+- Normalized state shape to avoid duplication and improve update performance.
+
+
+
+
+
+D. API Integration
+
+- Axios is used for making HTTP requests to the news API.
+- API key is securely stored in environment variables.
+
+
+E. Animations and UI Enhancements
+
+- Framer Motion is used for smooth animations, particularly in the Filters component for expanding/collapsing sections.
+- React Slick is used for the carousel in the TrendingTopics component.
+- Lucide React is used for consistent and scalable icon usage throughout the application.
+
+
+F. Error Handling and User Feedback
+
+- ErrorBoundary component catches and displays errors gracefully.
+- Sonner is used for displaying toast notifications for user feedback (e.g., successful message sending, error messages).
+
+
+G. Testing
+
+- Jest and React Testing Library are used for unit and integration testing of components.

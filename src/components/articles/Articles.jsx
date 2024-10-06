@@ -13,7 +13,7 @@ import {
   loadMoreArticles,
   resetFilters,
 } from "../../../utils/redux/slices/articlesSlice";
-import SearchBar from "../landingPage/search/SearchBar";
+import SearchBar from "../search/SearchBar";
 import ArticleCard from "./ArticleCard";
 import LoadingFallback from "../pages/LoadingFallback";
 
@@ -101,7 +101,7 @@ export default function Articles() {
     <div className="flex flex-col lg:flex-row gap-8 py-8">
       <aside className="w-full lg:w-1/4 space-y-6">
         <div>
-          <h2 className="text-xl font-bold mb-2 hidden lg:block">Search</h2>
+          <h2 className="text-xl font-bold mb-2 hidden lg:block"> </h2>
           <SearchBar />
         </div>
 

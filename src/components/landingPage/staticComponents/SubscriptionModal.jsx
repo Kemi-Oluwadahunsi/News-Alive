@@ -26,7 +26,7 @@ const SubscriptionModal = ({ isOpen, onClose }) => {
     // this function closes the modal after a short delay
     setTimeout(() => {
       onClose();
-    }, 1500); 
+    }, 2500); 
   };
 
   if (!isOpen) return null;
